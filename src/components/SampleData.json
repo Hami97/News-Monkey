@@ -1,0 +1,97 @@
+{
+    "status": "ok",
+    "totalResults": 7,
+    "articles": [
+      {
+        "source": {
+          "id": "crypto-coins-news",
+          "name": "Crypto Coins News"
+        },
+        "author": null,
+        "title": "Donald Trump's TIME's Person of the Year Award and Its Impact on Crypto Regulation",
+        "description": "President-elect Donald Trump has been granted Time Magazine's Person of the Year Award – could it impact crypto regulation?",
+        "url": "https://www.ccn.com/news/crypto/donald-trumps-times-person-of-year-award-impact-crypto/",
+        "urlToImage": "https://www.ccn.com/wp-content/uploads/2024/12/donald-trump-memecoins-white-house-comeback.webp",
+        "publishedAt": "2024-12-12T17:05:38Z",
+        "content": "Key Takeaways<ul><li>Time Magazine has awarded Donald Trump their Person of the Year.</li><li>Trump won the award “for driving a once-in-a-generation political realignment.”</li><li>Time’s award coul… [+3071 chars]"
+      },
+      {
+        "source": {
+          "id": "crypto-coins-news",
+          "name": "Crypto Coins News"
+        },
+        "author": null,
+        "title": "Kraken Operator Bit Trade Fined $5.2M in 'Significant Outcome' for Crypto Enforcement",
+        "description": "The Australian operator of the Kraken crypto exchange has been fined $5.2 million by ASIC for illegally issuing credit to over 1,100 customers.",
+        "url": "https://www.ccn.com/news/crypto/kraken-operator-bit-trade-fined-5-2m/",
+        "urlToImage": "https://www.ccn.com/wp-content/uploads/2024/07/cftc-bitcoin-ethereum-oregon-crypto-ponzi.webp",
+        "publishedAt": "2024-12-12T13:53:38Z",
+        "content": "Key Takeaways\r\n<ul><li>The Australian financial watchdog has ordered Bit Trade Pty, Kraken’s Australian operator, to pay a hefty fine for illegally issuing unvetted customers credit.</li><li>One Aust… [+2213 chars]"
+      },
+      {
+        "source": {
+          "id": "crypto-coins-news",
+          "name": "Crypto Coins News"
+        },
+        "author": null,
+        "title": "Nvidia Faces Crypto Appeal Setback — Market Reacts to Ruling",
+        "description": "The United States Supreme Court dismissed microchip giant Nvidia’s appeal to dismiss the $1 billion lawsuit against the company.",
+        "url": "https://www.ccn.com/news/crypto/nvidia-faces-crypto-appeal-setback-market-reacts-to-ruling/",
+        "urlToImage": "https://www.ccn.com/wp-content/uploads/2024/12/GettyImages-2188460679.webp",
+        "publishedAt": "2024-12-12T13:00:36Z",
+        "content": "Key Takeaways\r\n<ul><li>The Supreme Court upheld the lower circuit appeals court’s judgment in the Nvidia case.</li><li>The Supreme Court dismissed Nvidias appeal to toss the $1B lawsuit.</li><li>Nvid… [+2802 chars]"
+      },
+      {
+        "source": {
+          "id": "australian-financial-review",
+          "name": "Australian Financial Review"
+        },
+        "author": "Michelle Bowes",
+        "title": "Crypto: AMP buys $27 million in bitcoin in the first foray of big superannuation funds into the asset class",
+        "description": "The fund says the $27 million it is investing in bitcoin is part of its diversification strategy; critics say the asset class had no place in retirement portfolios.",
+        "url": "http://www.afr.com/companies/financial-services/amp-first-big-super-fund-to-buy-into-crypto-20241212-p5kxwj",
+        "urlToImage": "https://static.ffx.io/images/$zoom_0.3695%2C$multiply_3%2C$ratio_1.777778%2C$width_1059%2C$x_0%2C$y_0/t_crop_custom/c_scale%2Cw_800%2Cq_88%2Cf_jpg/t_afr_no_label_no_age_social_wm/860c0258c393efe9aa43da5dab6b0a264e4ee342",
+        "publishedAt": "2024-12-12T08:29:20Z",
+        "content": "AMP has invested $27 million in bitcoin, becoming the first major superannuation fund to buy into an asset class that has previously been shunned by big fund managers in the $4 trillion retirement sa… [+343 chars]"
+      },
+      {
+        "source": {
+          "id": "ars-technica",
+          "name": "Ars Technica"
+        },
+        "author": "Beth Mole",
+        "title": "Lab owner pleads guilty to faking COVID test results during pandemic",
+        "description": "Ill-gotten millions bought a Bentley, Lamborghini, Tesla X, and crypto, among other things.",
+        "url": "https://arstechnica.com/science/2024/10/covid-fraudster-pleads-guilty-faces-20-years-for-role-in-83m-testing-scam/",
+        "urlToImage": "https://cdn.arstechnica.net/wp-content/uploads/2024/10/GettyImages-1288678082-760x380.jpg",
+        "publishedAt": "2024-10-01T21:13:36+00:00",
+        "content": "Enlarge/ Residents line up for COVID-19 testing on November 30, 2020 in Chicago. \r\n55\r\nThe co-owner of a Chicago-based lab has pleaded guilty for his role in a COVID testing scam that raked in millio… [+2038 chars]"
+      },
+      {
+        "source": {
+          "id": "techcrunch",
+          "name": "TechCrunch"
+        },
+        "author": "Alex Wilhelm and Theresa Loconsolo",
+        "title": "$450M for Noname, two billion-dollar rounds, and good news for crypto startups | TechCrunch",
+        "description": "This morning on Equity, not only do we have good news for crypto founders, we're also digging into Akamai spending $450 million for API security firm Noname, and billion dollar deals from Wiz and Wayve.",
+        "url": "https://techcrunch.com/2024/05/08/450m-for-noname-two-billion-dollar-rounds-and-good-news-for-crypto-startups/",
+        "urlToImage": "https://techcrunch.com/wp-content/uploads/2023/07/GettyImages-942480316.jpg?resize=1200,835",
+        "publishedAt": "2024-05-08T15:01:51Z",
+        "content": "Good news, crypto founders: Venture capital activity is picking up in your sector after falling to multi-year lows in late 2023. Put another way, venture folks appear more web3-bullish than before, e… [+1599 chars]"
+      },
+      {
+        "source": {
+          "id": "the-globe-and-mail",
+          "name": "The Globe And Mail"
+        },
+        "author": "Unknown",
+        "title": "Panic at the crypto",
+        "description": "Cryptocurrencies have taken another beating this week. Globe columnist Tim Kiladze makes sense of this latest crash",
+        "url": "https://www.theglobeandmail.com/podcasts/the-decibel/article-panic-at-the-crypto/",
+        "urlToImage": "https://www.theglobeandmail.com/resizer/_avQSW-gNb8XMlBIpkC-PJlBCCk=/1200x800/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/tgam/GHQ5WM2SKJDSDH53LMIWUHHUSA.png",
+        "publishedAt": "2022-06-16T09:00:00Z",
+        "content": "Cryptocurrencies have taken another dive this week. And this crash follows seven months of declines, even for the big names in the game. Bitcoin, for example, is down more than 60 per cent from its p… [+339 chars]"
+      }
+    ]
+  }
