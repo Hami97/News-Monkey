@@ -1,92 +1,72 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-export class News extends Component {
-  static defaultProps = {
-    country: "in",
-    pageSize: 8,
-    category: "general",
-  };
+const News = (props) => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
 
-  static propTypes = {
-    country: PropTypes.string,
-    pageSize: PropTypes.number,
-    category: PropTypes.string,
-  };
+  // document.title = `${capitalizeFirstLetter(
+  //   props.category
+  // )} - News Monkey`;
 
-  capitalizeFirstLetter = (string) => {
+  const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      loading: true,
-      page: 1,
-      totalResults: 0,
-    };
-    document.title = `${this.capitalizeFirstLetter(
-      this.props.category
-    )} - News Monkey`;
-  }
-
-  async updateNews() {
-    this.props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
+  const updateNews = async () => {
+    props.setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?sources?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    setLoading({ loading: true });
     try {
       let data = await fetch(url);
-      this.props.setProgress(30);
+      props.setProgress(30);
       let parsedData = await data.json();
-      this.props.setProgress(50);
-      this.setState({
-        articles: parsedData.articles,
-        loading: false,
-        totalArticles: parsedData.totalResults,
-      });
+      props.setProgress(50);
+      setArticles(parsedData.articles);
+      setLoading(false);
+      setTotalResults(parsedData.totalResults);
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
-    this.props.setProgress(100);
-  }
-  async componentDidMount() {
-    this.updateNews();
-  }
+    props.setProgress(100);
+  };
+
+  useEffect(() => {
+    updateNews();
+  }, []);
 
   // handlePreviousClick = async () => {
   //   // let url = `https://newsapi.org/v2/top-headlines?sources?country=${
-  //   //   this.props.country
+  //   //   props.country
   //   // }&&category=${
-  //   //   this.props.category
+  //   //   props.category
   //   // }&apiKey=8ed1458004ac478eb3f268d7a96c71e5&page=${
-  //   //   this.state.page - 1
-  //   // }&pageSize=${this.props.pageSize}`;
+  //   //   page - 1
+  //   // }&pageSize=${props.pageSize}`;
   //   // try {
   //   //   let data = await fetch(url);
   //   //   let parsedData = await data.json();
-  //   //   this.setState({ articles: parsedData.articles });
+  //   //   setState({ articles: parsedData.articles });
   //   // } catch (error) {
   //   //   console.error("Error fetching data: ", error);
   //   // }
-  //   // this.setState({
-  //   //   // loading: true,
-  //   //   page: this.state.page - 1,
-  //   // });
-  //   this.setState({ page: this.state.page - 1 });
-  //   this.updateNews();
+  //   // setLoading(true);
+  //   // setPage(page - 1);
+  //   updateNews();
   // };
 
   // handleNextClick = async () => {
-  //   // let url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=8ed1458004ac478eb3f268d7a96c71e5&page=1&pageSize=${this.props.pageSize}`;
-  //   // this.setState({ loading: true });
+  //   // let url = `https://newsapi.org/v2/top-headlines?sources?country=${props.country}&category=${props.category}&apiKey=8ed1458004ac478eb3f268d7a96c71e5&page=1&pageSize=${props.pageSize}`;
+  //   // setState({ loading: true });
   //   // try {
   //   //   let data = await fetch(url);
   //   //   let parsedData = await data.json();
-  //   //   this.setState({
+  //   //   setState({
   //   //     articles: parsedData.articles,
   //   //     loading: false,
   //   //     totalArticles: parsedData.totalResults,
@@ -95,97 +75,92 @@ export class News extends Component {
   //   //   console.error("Error fetching data: ", error);
   //   // }
   //   // if (
-  //   //   this.state.page + 1 >
-  //   //   Math.ceil(this.state.totalResults / this.props.pageSize)
+  //   //   page + 1 >
+  //   //   Math.ceil(totalResults / props.pageSize)
   //   // ) {
   //   // } else {
   //   //   let url = `https://newsapi.org/v2/top-headlines?sources?country=${
-  //   //     this.props.country
+  //   //     props.country
   //   //   }&category=${
-  //   //     this.props.category
+  //   //     props.category
   //   //   }&apiKey=8ed1458004ac478eb3f268d7a96c71e5&page=${
-  //   //     this.state.page + 1
-  //   //   }&pageSize=${this.props.pageSize}`;
+  //   //     page + 1
+  //   //   }&pageSize=${props.pageSize}`;
   //   //   try {
   //   //     let data = await fetch(url);
   //   //     let parsedData = await data.json();
-  //   //     // this.setState({loading: trure})
-  //   //     this.setState({ articles: parsedData.articles, loading: true });
+  //   //     // setState({loading: trure})
+  //   //     setState({ articles: parsedData.articles, loading: true });
   //   //   } catch (error) {
   //   //     console.error("Error fetching data: ", error);
   //   //   }
-  //   //   this.setState({
+  //   //   setState({
   //   //     loading: false,
-  //   //     page: this.state.page + 1,
+  //   //     page: page + 1,
   //   //   });
   //   // }
-  //   this.setState({ page: this.state.page + 1 });
-  //   this.updateNews();
+  //   setPage(page + 1);
+  //   updateNews();
   // };
 
-  fetchMoreData = async () => {
-    this.setState({ page: this.state.page + 1 });
-    const url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
-    this.setState({ loading: true });
+  const fetchMoreData = async () => {
+    setPage(page + 1);
+    const url = `https://newsapi.org/v2/top-headlines?sources?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
+    setLoading(true);
     try {
       let data = await fetch(url);
       let parsedData = await data.json();
-      this.setState({
-        articles: this.state.articles.concat(parsedData.articles),
-        totalArticles: parsedData.totalResults,
-        // loading: false,
-      });
+      setArticles(articles.concat(parsedData.articles));
+      setTotalResults(parsedData.totalResults);
     } catch (error) {
       console.error("Error fetching more data: ", error);
-      this.setState({ loading: false });
+      setLoading(false);
     }
   };
-  render() {
-    return (
-      <>
-        <h2 className="text-center" style={{ margin: "35px 0" }}>
-          NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)}{" "}
-          Headlines
-        </h2>
-        {/* {this.state.loading && <Spinner />} */}
-        <InfiniteScroll
-          dataLength={this.state.articles.length}
-          next={this.fetchMoreData}
-          hasMore={this.state.articles.length !== this.state.totalArticles}
-          loader={<Spinner />}
-        >
-          <div className="container">
-            <div className="container my-3"></div>
-            <div className="row">
-              {this.state.articles.map((element) => {
-                return (
-                  <div
-                    className="col-md-4 my-2 d-flex justify-content-center mb-4"
-                    key={element.url}
-                  >
-                    <NewsItem
-                      title={element.title ? element.title : ""}
-                      description={
-                        element.description
-                          ? element.description.slice(0, 88)
-                          : ""
-                      }
-                      imgUrl={
-                        element.urlToImage
-                          ? element.urlToImage
-                          : "https://techcrunch.com/wp-content/uploads/2024/07/GettyImages-1497617145-1.jpg?resize=1200,800"
-                      }
-                      newsUrl={element.url}
-                      author={element.author}
-                      date={element.publishedAt}
-                      source={element.source.name}
-                    />
-                  </div>
-                );
-              })}
+  return (
+    <>
+      <h2 className="text-center" style={{ margin: "35px 0" }}>
+        NewsMonkey - Top {capitalizeFirstLetter(props.category)} Headlines
+      </h2>
+      {/* {loading && <Spinner />} */}
+      <InfiniteScroll
+        dataLength={articles.length}
+        next={fetchMoreData}
+        hasMore={articles.length !== totalResults}
+        loader={<Spinner />}
+      >
+        <div className="container">
+          <div className="container my-3"></div>
+          <div className="row">
+            {articles.map((element) => {
+              return (
+                <div
+                  className="col-md-4 my-2 d-flex justify-content-center mb-4"
+                  key={element.url}
+                >
+                  <NewsItem
+                    title={element.title ? element.title : ""}
+                    description={
+                      element.description
+                        ? element.description.slice(0, 88)
+                        : ""
+                    }
+                    imgUrl={
+                      element.urlToImage
+                        ? element.urlToImage
+                        : "https://techcrunch.com/wp-content/uploads/2024/07/GettyImages-1497617145-1.jpg?resize=1200,800"
+                    }
+                    newsUrl={element.url}
+                    author={element.author}
+                    date={element.publishedAt}
+                    source={element.source.name}
+                  />
+                </div>
+              );
+            })}
 
-              {/* {!this.state.loading &&
-                this.state.articles.map((element) => {
+            {/* {!loading &&
+                articles.map((element) => {
                   return (
                     <div className="col-md-4 my-2" key={element.url}>
                       <NewsItem
@@ -208,13 +183,13 @@ export class News extends Component {
                     </div>
                   );
                 })} */}
-            </div>
           </div>
-        </InfiniteScroll>
-        {/* <div className="container d-flex justify-content-between">
+        </div>
+      </InfiniteScroll>
+      {/* <div className="container d-flex justify-content-between">
           <button
-            disabled={this.state.page <= 1}
-            onClick={this.handlePreviousClick}
+            disabled={page <= 1}
+            onClick={handlePreviousClick}
             className="btn btn-dark"
           >
             {" "}
@@ -222,17 +197,29 @@ export class News extends Component {
           </button>
           <button
             disabled={
-              this.state.page + 1 >
-              Math.ceil(this.state.totalResults / this.props.pageSize)
+              page + 1 >
+              Math.ceil(totalResults / props.pageSize)
             }
-            onClick={this.handleNextClick}
+            onClick={handleNextClick}
             className="btn btn-dark"
           >
             Next &rarr;
           </button>
         </div>  */}
-      </>
-    );
-  }
-}
+    </>
+  );
+};
+
+News.defaultProps = {
+  country: "in",
+  pageSize: 8,
+  category: "general",
+};
+
+News.propTypes = {
+  country: PropTypes.string,
+  pageSize: PropTypes.number,
+  category: PropTypes.string,
+};
+
 export default News;
