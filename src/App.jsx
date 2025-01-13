@@ -29,7 +29,6 @@ export default class App extends Component {
 
   // for vite
   apiKey = import.meta.env.VITE_API_KEY;
-  //apiKey = "8ed1458004ac478eb3f268d7a96c71e5";
 
   render() {
     return (
