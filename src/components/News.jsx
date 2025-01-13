@@ -35,11 +35,14 @@ export class News extends Component {
   }
 
   async updateNews() {
-    const url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=8ed1458004ac478eb3f268d7a96c71e5&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     try {
       let data = await fetch(url);
+      this.props.setProgress(30);
       let parsedData = await data.json();
+      this.props.setProgress(50);
       this.setState({
         articles: parsedData.articles,
         loading: false,
@@ -48,6 +51,7 @@ export class News extends Component {
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
+    this.props.setProgress(100);
   }
   async componentDidMount() {
     this.updateNews();
@@ -121,7 +125,7 @@ export class News extends Component {
 
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
-    const url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=8ed1458004ac478eb3f268d7a96c71e5&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?sources?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     try {
       let data = await fetch(url);
@@ -139,7 +143,7 @@ export class News extends Component {
   render() {
     return (
       <>
-        <h2 className="text-center">
+        <h2 className="text-center" style={{ margin: "35px 0" }}>
           NewsMonkey - Top {this.capitalizeFirstLetter(this.props.category)}{" "}
           Headlines
         </h2>
@@ -155,7 +159,10 @@ export class News extends Component {
             <div className="row">
               {this.state.articles.map((element) => {
                 return (
-                  <div className="col-md-4 my-2" key={element.url}>
+                  <div
+                    className="col-md-4 my-2 d-flex justify-content-center mb-4"
+                    key={element.url}
+                  >
                     <NewsItem
                       title={element.title ? element.title : ""}
                       description={
